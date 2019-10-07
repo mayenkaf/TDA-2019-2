@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ejercicio 01</title>
+</head>
+<body>
+	<h1>Mostrar 3 imagenes</h1>
+	<div>
+		<img id="imagen" src="imgs/avengers.jpg" width="200px" height="260px" contador="0">
+	</div>
+	<div>
+		<button onclick="siguiente()">Siguiente</button>
+		<button onclick="siguiente2()">Siguiente2</button>
+		<button onclick="siguiente3()">Siguiente3</button>
+	</div>
+<script>
+	var contador = 0;
+	function siguiente(){
+		contador++;
+		if(contador==1){
+			document.getElementById("imagen").src="imgs/rey leon.jpg";	
+		}else if(contador==2){
+			document.getElementById("imagen").src="imgs/gladiador.jpg";
+		}else{
+			document.getElementById("imagen").src="imgs/avengers.jpg";
+		}
+		
+		if(contador==3){
+			contador=0;
+		}
+	}
+
+	function siguiente2(){
+		var imagenes = ["avengers.jpg","rey leon.jpg", "gladiador.jpg","xmen.jpg"];
+		if (contador==imagenes.length-1) {
+			contador=0;
+		}else{
+			contador++;
+		}
+		document.getElementById("imagen").src="imgs/" + imagenes[contador];
+	}
+	function siguiente3(){
+		var cont = document.getElementById("imagen").getAttribute("contador");
+		var n = Number(cont);
+		var imagenes = ["avengers.jpg","rey leon.jpg", "gladiador.jpg","xmen.jpg"];
+		if (n==imagenes.length-1) {
+			n=0;
+		}else{
+			n++;
+		}
+		document.getElementById("imagen").src="imgs/" + imagenes[n];
+		document.getElementById("imagen").setAttribute("contador",n);
+	}
+
+</script>
+</body>
+</html>
