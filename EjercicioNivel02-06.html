@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ejercicio 06</title>
+	<style type="text/css">
+
+		.rojo{
+			color:tomato;
+		}
+		.verde{
+			color:green;
+		}
+		.amarillo{
+			color:yellow;
+		}
+
+		ul{
+			display:flex;
+			flex-direction:column;
+			padding-left:0;
+			margin-bottom:0;
+		}
+		li{
+			position:relative;
+			display:block;
+			padding:.75rem 1.25rem;
+			margin-bottom:-1px;
+			border:1px solid black;
+		}
+		.activar{
+			background-color: black;
+			color:white;
+		}
+	</style>
+</head>
+<body onload="listar(0)">
+<div>
+	<h2>Opciones:</h2>
+	<div>
+		<input type="radio" name="tipo" onclick="listar(0)" checked>Peliculas
+		<input type="radio" name="tipo" onclick="listar(1)">Cantantes
+		<input type="radio" name="tipo" onclick="listar(2)">Libros
+	</div>
+	<div id="resp">
+		
+	</div>
+	<div>
+		<button onclick="back()">Back</button>
+		<button onclick="next()">Next</button>
+	</div>
+</div>
+<script>
+	function listar(cual){
+		var peliculas=["Ole","300","Guason","El Rey Leon"];
+		var cantantes=["Ozuna","Canserbero","Rosy War","Sebastian Yatra","Chacalon"];
+		var libros = ["Lazarillo de Tormes","El cid de las niñas","Odisea"];
+		var opciones = [peliculas,cantantes,libros];
+		var colores = ["rojo","verde","amarillo"];
+		var optElegido = opciones[cual];
+		var text = "<ul>";
+		for(var i=0;i<optElegido.length;i++){
+			text = text + "<li>" + optElegido[i]+"</li>";
+		}
+		text = text + "</ul>";
+		document.getElementById("resp").innerHTML=text;
+		document.getElementById("resp").setAttribute("class",colores[cual]);
+
+		indice = 0;
+		items=document.getElementById("resp").getElementsByTagName("li");
+		activar(indice);
+	}
+
+	var indice;
+	var items;
+	function activar(quien){
+		items[quien].setAttribute("class","activar");
+	}
+	function desactivar(quien){
+		items[quien].removeAttribute("class");
+	}
+	function next(){
+		desactivar(indice);
+		if(indice==items.length-1){
+			indice=0;
+		}else{
+			indice++;	
+		}
+		activar(indice);
+	}
+	function back(){
+		desactivar(indice);
+		if(indice==0){
+			indice = items.length-1;
+		}else{
+			indice--;
+		}
+		activar(indice);
+	}
+</script>
+</body>
+</html>
