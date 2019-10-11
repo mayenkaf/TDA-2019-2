@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ejercicio 08</title>
+	<style type="text/css">
+		.row{
+			display: flex;
+		}
+		.col{
+			display: inline;
+		}
+	</style>
+</head>
+<body>
+<div class="row">
+	<div class="col">
+		<label>Pelicula:</label>
+		<select id="ld" onclick="mostrarImg()" >
+			<option>Capitan America</option>
+			<option>Doctor Strange</option>
+			<option>Iron Man</option>
+			<option>Pantera Negra</option>
+			<option>Mujer Maravilla</option>
+		</select>			
+	</div>
+	<div class="col">
+		<img id="m" src="imgs/capitanamerica.jpg">
+	</div>
+</div>
+<script>
+	var peliculas =["capitanamerica.jpg","doctorstrange.jpg","ironman.jpg","panteranegra.jpg","mujermaravilla.jpg"];
+	function mostrarImg(){
+		var indice = document.getElementById("ld").options.selectedIndex;
+		document.getElementById("m").src = "imgs/" + peliculas[indice];
+	}
+</script>
+</body>
+</html>
