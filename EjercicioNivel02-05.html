@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ejercicio 05</title>
+	<style type="text/css">
+		#resp img{
+			width: 150px;
+			height: 150px;
+			margin:5px;
+			border: solid 2px black;
+		}
+	</style>
+</head>
+<body>
+<div>
+	<input type="radio" name="opcion" onclick="listar(0)">Peliculas
+	<input type="radio" name="opcion" onclick="listar(1)">Libros
+	<input type="radio" name="opcion" onclick="listar(2)">Cantantes
+</div>
+<div id="resp">
+
+</div>
+<script>
+
+	var peliculas=["Gladiador.jpg", "Titanic.jpg","xmen.jpg", "Avengers.jpg", "Rey Leon.jpg"];
+	var cantantes=["PabloAlboran.jpg","LauraPausini.jpg", "RobbieWilliams.jpg", "KatyPerry.jpg"];
+	var libros=["Meg.jpg", "Aguaparaelefantes.jpg","Oscura.jpg","Plenitud.jpg","testamentomaya.jpg"];
+	var opciones = [peliculas, libros,cantantes];
+
+	function listar(quien){
+		var opcion = opciones[quien];
+		var text = "";
+		for(var i=0;i<opcion.length;i++){
+			text = text + "<img src='imgs/"+opcion[i]+"'>";
+		}
+		document.getElementById("resp").innerHTML=text;
+	}
+</script>
+</body>
+</html>
