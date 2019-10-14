@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ejercicio 09</title>
+</head>
+<body>
+<div>
+	<h3>Programas Educativos</h3>
+	<div>
+		<label>Universidad</label>
+		<select id="universidad" onclick="llenar()">
+			<option>Universidad Nacional del Altiplano</option>
+			<option>Universidad Nacional San Agustin</option>
+		</select>			
+	</div>
+	<div>
+		<label>Programa de Estudios</label>
+		<select id="programa">
+			
+		</select>			
+	</div>
+</div>
+<script>
+	var unap = ["Derecho", "Medicina", "Educación", "Economia"];
+	var unsa = ["Biologia","Ciencias Sociales","Electronica"];
+	var universidades=[unap, unsa];
+	function llenar(){
+		var indice = document.getElementById("universidad").options.selectedIndex;
+		var programa = universidades[indice];//elegir lista de programas
+		quitar();
+		var prog = document.getElementById("programa");//segundo select
+		for(var i = 0; i< programa.length; i++){
+			var op = new Option(programa[i],i); //crea una opcion
+			prog.options.add(op,i);//añade la opcion creada al select
+		}
+	}
+	function quitar(){
+		var prog = document.getElementById("programa");//segundo select
+		while(prog.options.length){
+				prog.remove(0); //quitar opcion
+		}
+	}
+</script>
+</body>
+</html>
