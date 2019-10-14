@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ejercicio 10</title>
+</head>
+<body>
+<div>
+	<h3>Comics</h3>
+	<div>
+		<label>Categoria</label>
+		<select id="categoria" onclick="llenar()">
+			<option>DC Estudios</option>
+			<option>Marvel Estudios</option>
+		</select>			
+	</div>
+	<div>
+		<label>Opciones</label>
+		<select id="opciones" onclick="mostrarImg()">	
+		</select>			
+	</div>
+	<div>
+		<img id="m" src="">
+	</div>
+</div>
+<script>
+	var dc = ["batman.jpg", "mujermaravilla.jpg"];
+	var marvel = ["capitanamerica.jpg","doctorstrange.jpg","ironman.jpg","panteranegra.jpg"];
+	var comics=[dc, marvel];
+	function llenar(){
+		var indiceC = document.getElementById("categoria").options.selectedIndex;
+		var comic = comics[indiceC];//elegir lista de programas
+		quitar();
+		var opciones = document.getElementById("opciones");//segundo select
+		for(var i = 0; i< comic.length; i++){
+			var op = new Option(comic[i],i); //crea una opcion
+			opciones.options.add(op,i);//añade la opcion creada al select
+		}
+	}
+	function quitar(){
+		var opciones = document.getElementById("opciones");//segundo select
+		while(opciones.options.length){
+				opciones.remove(0); //quitar opcion
+		}
+	}
+	function mostrarImg(){//del ejercicio 08
+		var indiceC = document.getElementById("categoria").options.selectedIndex;
+		var comic = comics[indiceC];
+		var indiceI = document.getElementById("opciones").options.selectedIndex;
+		document.getElementById("m").src = "imgs/" + comic[indiceI];
+	}
+</script>
+</body>
+</html>
